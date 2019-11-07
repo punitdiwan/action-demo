@@ -18,4 +18,4 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v1
       - name: Deploy on Now.sh - Static Production Build
-        run: now
+        run: now -t Qa58IyKnoxHEiSbpiarLBA0c
