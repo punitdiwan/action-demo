@@ -11,28 +11,19 @@ jobs:
         uses: actions/bin/filter@master
         with:
           args: "branch master"
-
-  publish:
-    name: Publish to prod
-    runs-on: ubuntu-latest
-    needs: [filteroutmaster]
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v1
-      - name: Deploy on Zeit - Prod
-        uses: actions/zeit-now@master
-        env:
-          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
-        with:
-          args: --prod
-
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Set up node environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: 11.x
+      - name: NPM install now cli
+        run: npm install now
       - name: Checkout the repository
         uses: actions/checkout@v1
-      - name: Deploy on Zeit
-        uses: actions/zeit-now@master
-        env:
-          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
+      - name: Sanity check now version
+        run: ./node_modules/now/dist/index.js -v
+      - name: Deploy on Now.sh - Static Production Build
+        run: ./node_modules/now/dist/index.js alias $(./node_modules/now/dist/index.js -A now.json --token=${{ secrets.ZEIT_TOKEN }}) our-production-url.now.sh --token=${{ secrets.ZEIT_TOKEN }}
