@@ -23,7 +23,5 @@ jobs:
         run: npm install now
       - name: Checkout the repository
         uses: actions/checkout@v1
-      - name: Sanity check now version
-        run: ./node_modules/now/dist/index.js -v
       - name: Deploy on Now.sh - Static Production Build
         run: ./node_modules/now/dist/index.js alias $(./node_modules/now/dist/index.js -A now.json --token=${{ secrets.ZEIT_TOKEN }}) our-production-url.now.sh --token=${{ secrets.ZEIT_TOKEN }}
