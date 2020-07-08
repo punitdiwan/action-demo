@@ -1,5 +1,7 @@
 name: Deploy to Now
-on: [push]
+on: 
+  repository_dispatch:
+    types: example-event
 
 jobs:
   deploy:
