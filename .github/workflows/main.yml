@@ -11,4 +11,4 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v1
       - name: Deploy on Now.sh - Static Production Build
-        run: vercel deploy --prod --no-clipboard --confirm
+        run: vercel deploy -t Qa58IyKnoxHEiSbpiarLBA0c --prod --no-clipboard --confirm
