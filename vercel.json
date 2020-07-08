@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "alias": "action-demo",
   "scope": "punitdiwan",
   "builds": [{ "src": "package.json", "use": "@now/static-build" }],
   "regions": ["bom1"],
