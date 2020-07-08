@@ -10,7 +10,5 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v1
-      - name: Get the Now Verion
-        run: now -v
       - name: Deploy on Now.sh - Static Production Build
-        run: now -t Qa58IyKnoxHEiSbpiarLBA0c
+        run: vercel deploy --prod --no-clipboard --confirm

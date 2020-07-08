@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "action-demo",
   "alias": "action-demo",
+  "scope": "punitdiwan",
   "builds": [{ "src": "package.json", "use": "@now/static-build" }],
   "regions": ["bom1"],
   "routes": [
